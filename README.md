@@ -4,6 +4,13 @@ Data Structure Project
 
 ## B+ Tree
 
+
+### References
+
+- [Intro](https://www.geeksforgeeks.org/b-tree-set-1-introduction-2/)
+- [Insertion](https://www.geeksforgeeks.org/b-tree-set-1-insert-2/)
+- [Deletion](https://www.geeksforgeeks.org/b-tree-set-3delete/)
+
 ### Tools
 
 - CodeBlocks 16.01
@@ -12,11 +19,13 @@ Data Structure Project
     ```cpp
     #include <iostream>
     using namespace std;
-    int main()
-    {
+    int main() {
         cout << "Hello world!" << endl;
         int* n = nullptr;
         cout << "Bye world!" << endl;
         return 0;
     }
     ```
+- Code Style : Google
+- Goto Setting > Editor > source formatter and choose Google
+- On code editor screen, Right click and `format use AStyle` to format.

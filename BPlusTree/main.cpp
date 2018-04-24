@@ -1,11 +1,10 @@
-    #include <iostream>
+#include <iostream>
+using namespace std;
+#include "btree.h"
 
-    using namespace std;
-
-    int main()
-    {
-        cout << "Hello world!" << endl;
-        int* n = nullptr;
-        cout << "Bye world!" << endl;
-        return 0;
-    }
+int main() {
+    BTree ob;
+    cout << "Hello world!" << endl;
+    cout << "Bye world!" << endl;
+    return 0;
+}

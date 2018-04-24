@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1524553760 source:d:\1st sem mca\github\mca201-ds-project\bplustree\btree.cpp
+	"btree.h"
+
+1524554395 d:\1st sem mca\github\mca201-ds-project\bplustree\btree.h
+	"btreenode.h"
+
+1524554411 d:\1st sem mca\github\mca201-ds-project\bplustree\btreenode.h
+
+1524554449 source:d:\1st sem mca\github\mca201-ds-project\bplustree\btreenode.cpp
+	<iostream>
+	"btreenode.h"
+
