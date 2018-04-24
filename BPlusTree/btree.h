@@ -42,7 +42,6 @@ class BTree {
         return (root == nullptr)? nullptr : root->search(k);
     }
 
-
 };
 
 #endif // BTREE_H

@@ -3,7 +3,10 @@
 Data Structure Project
 
 ## B+ Tree
-
+- Insertion
+- Deletion
+- Traversal
+- Search
 
 ### References
 
@@ -29,3 +32,4 @@ Data Structure Project
 - Code Style : Google
 - Goto Setting > Editor > source formatter and choose Google
 - On code editor screen, Right click and `format use AStyle` to format.
+- If you want to switch to dark color theme [follow this video](https://www.youtube.com/watch?v=H-7uVSrnrnU)

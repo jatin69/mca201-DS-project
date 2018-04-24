@@ -1,5 +1,7 @@
 # custom
 *.html
+Resources/
+
 # Prerequisites
 *.d
 
