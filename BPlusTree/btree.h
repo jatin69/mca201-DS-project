@@ -29,6 +29,9 @@ class BTree {
      */
     BTree& operator=(const BTree& other);
 
+    // The main function that inserts a new key in this B-Tree
+    void insert(int k);
+
     // function to traverse the tree
     void traverse() {
         if (root != nullptr) root->traverse();

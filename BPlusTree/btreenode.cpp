@@ -2,8 +2,6 @@
 using namespace std;
 #include "btreenode.h"
 
-
-
 BTreeNode::BTreeNode() {
     //ctor
 }
@@ -49,7 +47,7 @@ void BTreeNode::traverse() {
         if (leaf == false)
             C[i]->traverse();
         cout << " " << keys[i];
-   }
+    }
 
     // Print the subtree rooted with last child
     if (leaf == false)
