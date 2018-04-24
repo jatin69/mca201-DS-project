@@ -22,7 +22,7 @@ public:
 
     BpTree(int);
     void insert(int, string);
-    void remove(int);
+    //void remove(int);
     string find(int);
     void printKeys();
     void printValues();
