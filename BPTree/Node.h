@@ -21,23 +21,6 @@ public:
   bool isLeaf;
 };
 
-class LeafNode : public Node {
-  /*
-  Objective: Create a class for a Leaf Node for B+ tree
-  Approach: Class defines data item is names element with data type string and
-  link is named next of node type Input Parameters: none Return Value: none
-  Description: A leaf node (inherits general node)
-  */
-public:
-  Node *Next;
-  vector<string> Value;
-  LeafNode() {
-    isLeaf = true;
-    Next = NULL;
-    Parent = NULL;
-  }
-};
-
 class NonLeafNode : public Node {
   /*
   Objective: Create a class for a Non Leaf Node for B+ tree
@@ -51,6 +34,23 @@ public:
   vector<Node *> Children;
   NonLeafNode() {
     isLeaf = false;
+    Parent = NULL;
+  }
+};
+
+class LeafNode : public Node {
+  /*
+  Objective: Create a class for a Leaf Node for B+ tree
+  Approach: Class defines data item is names element with data type string and
+  link is named next of node type Input Parameters: none Return Value: none
+  Description: A leaf node (inherits general node)
+  */
+public:
+  Node *Next;
+  vector<string> Value;
+  LeafNode() {
+    isLeaf = true;
+    Next = NULL;
     Parent = NULL;
   }
 };

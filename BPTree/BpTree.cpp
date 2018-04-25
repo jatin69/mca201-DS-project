@@ -1,17 +1,17 @@
 #include "BpTree.h"
 #include <math.h>
 
-BpTree::BpTree(int nptr) {
+BpTree::BpTree(int degree) {
   /*
   Objective: constructor function of B+ Tree class aims at initializing the tree
   Approach: Self implementation of B+ Trees is being used
   Input Parameters:
-      nptr: degree of the b+ tree
+      degree: degree of the b+ tree
   Return Values: None
   */
 
-  this->n = nptr;
-  this->head = new LeafNode();
+  n = degree;
+  head = new LeafNode();
 }
 
 BpTree::~BpTree() {
@@ -22,8 +22,9 @@ BpTree::~BpTree() {
   Return Values: None
   */
 
-  if (this->head) {
-    delete this->head;
+  // todo : Incorrect, i need to delete whole tree, not just root node
+  if (head) {
+    delete head;
   }
 }
 
@@ -37,23 +38,37 @@ void BpTree::insert(int key, string value) {
   Return Values: None
   */
 
-  Node *t = this->head;
-  while (!t->isLeaf) { // find the appropriate location for the element
+  // find the appropriate location for the element
+
+  Node *t = this->head; // start from head
+
+
+  while (!t->isLeaf) {  // until i reach a leaf node
     int flag = 0;
+
+    // until a larger value in found in the key array, keep moving forward
     for (int i = 0; i < t->Keys.size(); ++i) {
+     // found a key with larger value
       if (t->Keys[i] > key) {
+        // Morph as a NonLeafNode and goto ith child
         t = ((NonLeafNode *)t)->Children[i];
         flag = 1;
         break;
       }
     }
+    // if no key is larger, it is the largest
     if (!flag) {
+            // smartly put value  ?? check
       t = ((NonLeafNode *)t)->Children[t->Keys.size()];
     }
   }
+
+
+  // if key should be after last ( also handles if the key has currently 0 keys)
   if (t->Keys.size() == 0 || key > t->Keys.back()) {
     t->Keys.push_back(key);
     ((LeafNode *)t)->Value.push_back(value);
+
   } else {
     for (int i = 0; i < t->Keys.size(); ++i) { // insertion into the leaf node
       if (t->Keys[i] == key) {
@@ -70,37 +85,59 @@ void BpTree::insert(int key, string value) {
   if (t->Keys.size() > this->n) { // splitting the leaf node
     Node *tnew = new LeafNode();
     tnew->Parent = t->Parent;
-    tnew->Keys.insert(tnew->Keys.begin(), t->Keys.begin() + ceil((n + 1) / 2),
-                      t->Keys.end());
+    
+    // make new leaf with second half - adding keys
+    tnew->Keys.insert(tnew->Keys.begin(), t->Keys.begin() + ceil((n + 1) / 2), t->Keys.end());
+    // make new leaf with second half - adding values
     ((LeafNode *)tnew)
         ->Value.insert(((LeafNode *)tnew)->Value.begin(),
                        ((LeafNode *)t)->Value.begin() + ceil((n + 1) / 2),
                        ((LeafNode *)t)->Value.end());
+    
+    // deleting those second half keys & values from original
     t->Keys.erase(t->Keys.begin() + ceil((n + 1) / 2), t->Keys.end());
     ((LeafNode *)t)
         ->Value.erase(((LeafNode *)t)->Value.begin() + ceil((n + 1) / 2),
                       ((LeafNode *)t)->Value.end());
+    
+     // new made leaf points to NULL
     ((LeafNode *)tnew)->Next = ((LeafNode *)t)->Next;
+    // old leaf points to new leafnode
     ((LeafNode *)t)->Next = tnew;
+
+
     key = t->Keys[ceil((n + 1) / 2) - 1];
+
+    // t's parent is a non leaf node
     while (t->Parent != NULL) {
+      // now new t = t -> parent, because all the process now needs to be done on parent
       t = t->Parent;
+
       for (int i = 0; i < t->Keys.size(); ++i) {
+
+        // if current key is largest of already present keys
         if (key > t->Keys.back()) {
+          // because it is largest, push it at last
           t->Keys.push_back(key);
+          // push the newly splitted leaf node to the children array of its parent
           ((NonLeafNode *)t)->Children.push_back(tnew);
           break;
-        } else if (t->Keys[i] > key) {
+        }
+        // if current key not the largest 
+        else if (t->Keys[i] > key) {
+          // insert the t child to its children array
           t->Keys.insert(t->Keys.begin() + i, key);
-          ((NonLeafNode *)t)
-              ->Children.insert(((NonLeafNode *)t)->Children.begin() + i + 1,
-                                tnew);
+          // insert the tnew child to its children array
+          ((NonLeafNode *)t) ->Children.insert(((NonLeafNode *)t)->Children.begin() + i + 1, tnew);
           break;
         }
       }
+      // if the parent also needs spilitting
       if (t->Keys.size() > this->n) {
+        // make new node
         Node *nright = new NonLeafNode();
         nright->Parent = t->Parent;
+        // split to 2
         nright->Keys.insert(nright->Keys.begin(),
                             t->Keys.begin() + floor((n + 2) / 2),
                             t->Keys.end());
@@ -125,16 +162,20 @@ void BpTree::insert(int key, string value) {
         return;
       }
     }
+    // when we have reached root
     if (t->Parent == NULL) {
+      // make a non leaf node
       t->Parent = new NonLeafNode();
-      ((NonLeafNode *)t->Parent)
-          ->Children.insert(((NonLeafNode *)t->Parent)->Children.begin(), t);
-      ((NonLeafNode *)t->Parent)
-          ->Children.insert(((NonLeafNode *)t->Parent)->Children.begin() + 1,
-                            tnew);
+      
+      // insert t and tnew to children array of this new nonleafnode
+      ((NonLeafNode *)t->Parent) -> Children.insert(((NonLeafNode *)t->Parent)->Children.begin(), t);
+      ((NonLeafNode *)t->Parent) -> Children.insert(((NonLeafNode *)t->Parent)->Children.begin() + 1, tnew);
+      
       if (t->isLeaf) {
+        // move the last key of the leaf node to the begin of parent node
         (t->Parent)->Keys.insert((t->Parent)->Keys.begin(), t->Keys.back());
       } else {
+        // move ( the last key of its last child ) to the begin of parent of t
         (t->Parent)->Keys.insert(
             (t->Parent)->Keys.begin(),
             ((NonLeafNode *)t)->Children.back()->Keys.back());

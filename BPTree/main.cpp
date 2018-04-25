@@ -14,6 +14,7 @@ int main() {
     cout << "2. Find" << endl;
     cout << "3. Print Keys" << endl;
     cout << "4. Print Values" << endl;
+    cout << "5. Delete Key" << endl;
     cout << "Enter: ";
     cin >> c;
     switch (c) {
@@ -40,6 +41,14 @@ int main() {
     }
     case 4: {
       t.printValues();
+      break;
+    }
+    case 5: {
+      int x;
+      cout <<"\nEnter key to be deleted : ";
+      cin >> x;
+      t.remove(x);
+      break;
     }
     default:
       break;

@@ -11,12 +11,12 @@ class BpTree {
   objective: Create a B+ Tree class
   Input parameters: none
   Output value: none
-  Side effects: Class BpTree defines B+ Tree class
+  Side effects: Class BPTree defines B+ Tree class
   Approach: Class definition
   */
 private:
-  Node *head;
-  int n;
+  Node *head; // head points to root of the tree
+  int n;      // degree of tree
 
 public:
   BpTree(int);

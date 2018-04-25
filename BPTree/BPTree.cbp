@@ -32,12 +32,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="BpTree.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="Node.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="BpTree.cpp" />
+		<Unit filename="BpTree.h" />
+		<Unit filename="Deletion.cpp" />
+		<Unit filename="Node.h" />
+		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
