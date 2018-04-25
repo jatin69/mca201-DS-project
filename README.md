@@ -13,6 +13,9 @@ Data Structure Project
 - [Intro](https://www.geeksforgeeks.org/b-tree-set-1-introduction-2/)
 - [Insertion](https://www.geeksforgeeks.org/b-tree-set-1-insert-2/)
 - [Deletion](https://www.geeksforgeeks.org/b-tree-set-3delete/)
+- [BTree key-value pair - IN MEMORY](https://github.com/wymay/BplusTree-c-)
+- [BTree for DBMS - IN MEMORY](https://github.com/parachvte/B-Plus-Tree)
+- [Tutorial](http://sketchingdream.com/blog/b-plus-tree-tutorial/) with its [code](https://github.com/sayef/bplus-tree/)
 
 ### Tools
 
@@ -32,4 +35,5 @@ Data Structure Project
 - Code Style : Google
 - Goto Setting > Editor > source formatter and choose Google
 - On code editor screen, Right click and `format use AStyle` to format.
+- Codeblocks is not auto-wrapping after 80 chars. So using VS code default formatting.
 - If you want to switch to dark color theme [follow this video](https://www.youtube.com/watch?v=H-7uVSrnrnU)

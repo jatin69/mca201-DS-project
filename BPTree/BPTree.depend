@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1524618742 source:d:\1st sem mca\github\mca201-ds-project\bptree\bptree.cpp
+	"BpTree.h"
+	<math.h>
+
+1524618737 d:\1st sem mca\github\mca201-ds-project\bptree\bptree.h
+	"Node.h"
+	<iostream>
+
+1524618748 d:\1st sem mca\github\mca201-ds-project\bptree\node.h
+	<iostream>
+	<string>
+	<vector>
+
+1524618754 source:d:\1st sem mca\github\mca201-ds-project\bptree\deletion.cpp
+	"BpTree.h"
+	"Node.h"
+	<math.h>
+
+1524618882 source:d:\1st sem mca\github\mca201-ds-project\bptree\main.cpp
+	"BpTree.h"
+	<iostream>
+
