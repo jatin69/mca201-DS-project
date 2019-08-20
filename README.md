@@ -1,6 +1,6 @@
 # mca201-DS-project
 
-Data Structure Project
+Data Structure Project. B Plus Tree (In-memory)
 
 ## B+ Tree
 - Insertion
@@ -20,7 +20,7 @@ Data Structure Project
 ### Tools
 
 - CodeBlocks 16.01
-- Default MingW compiler of codeblocks wiht option : `-std=c++11`
+- Default MingW compiler of codeblocks with option : `-std=c++11`
 - Goto Setting > Compiler > Global Compiler Settings > Compiler Settings > Other compiler options, and then paste `-std=c++11` in the text box. Test by running the following code. It should run fine.
     ```cpp
     #include <iostream>
@@ -37,3 +37,7 @@ Data Structure Project
 - On code editor screen, Right click and `format use AStyle` to format.
 - Codeblocks is not auto-wrapping after 80 chars. So using VS code default formatting.
 - If you want to switch to dark color theme [follow this video](https://www.youtube.com/watch?v=H-7uVSrnrnU)
+
+## Future scope
+
+- Implement on-disk B-Plus Tree
